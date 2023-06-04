@@ -117,8 +117,6 @@ namespace Bessett.CodeWriter.Tests.Tasks
                 v.GetType().GetProperty("Name").SetValue(v, "Skywalker");
                 v2.GetType().GetProperty("Nombre").SetValue(v2, "Vader");
 
-                //var v5 = v2.GetType().GetMethod("Transform").Invoke(v2, new [] { v } );
-
                 t2.Nombre = "Fred";
 
                 t.Hello();
@@ -127,26 +125,10 @@ namespace Bessett.CodeWriter.Tests.Tasks
                 t2.Hello();
                 t2.Hello("Luke");
                 t2.Hello(t2.Nombre);
-
-                //v2 = t2.Transform(t);       // dynamic works much better than var
-
+               
                 t2 = t;
 
-                //var v3 = t2.Transform(v);   // throws
-
                 return TaskResult.Complete();
-
-                /*
-                 
-                 dynamic is not interpreted as a target type, so equals override does not
-                 really work. It does a dynamic operation.
-
-                 To make this work, need to implement an interface that includes ICanonical.
-                 ICanonical should have ToCanonical() support for a conversion.
-                                  
-                */
-
-
 
             }
             catch (Exception ex)
